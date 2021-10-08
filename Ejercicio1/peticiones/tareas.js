@@ -1,3 +1,5 @@
+const API_URI = 'https://todo-app-bs.herokuapp.com/v1';
+
 const tasksList = document.getElementById('tasksList');
 
 tasksList.addEventListener('click', e => {
@@ -6,42 +8,27 @@ tasksList.addEventListener('click', e => {
     console.log(e.target.parentNode.getAttribute('id'));
 })
 
-const tasks = [
-    {
-        _id: '7as8dnf37nd',
-        title: 'Comprar leche',
-        idUser: '789sdnmgd',
-        description: 'Ir a la tienda por leche',
-        dueDate: new Date(),
-        status: true
-    },
-    {
-        _id: 'gkd7h2lsdfnm',
-        title: 'Estudiar',
-        idUser: 'skd674kjnls',
-        description: 'Leer los eventos del DOM',
-        dueDate: new Date(),
-        status: false
-    },
-    {
-        _id: 'asdf874nfsd',
-        title: 'Trabajar',
-        idUser: 'asdfv7a3890',
-        description: 'Ir al trabajo de 7 a 5',
-        dueDate: new Date(),
-        status: true
-    },
-];
 
-export const loadTasks = () => {
-    let list = '';
-    tasks.forEach(task => (
-        list += `<li id="${task._id}">
+export const loadTasks = async () => {
+    try {
+        const respuesta = await axios.get(API_URI + '/task', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        });
+        let tasks = respuesta.data.detail;
+        let list = '';
+        tasks.forEach(task => (
+            list += `<li id="${task._id}">
         ${task.title} - ${task.description}
         <button>editar</button>
         <button>eliminar</button>
         </li>
         `
-    ))
-    tasksList.innerHTML = list;
+        ))
+        tasksList.innerHTML = list;
+
+    } catch (e) {
+        console.log(e);
+    }
 }
