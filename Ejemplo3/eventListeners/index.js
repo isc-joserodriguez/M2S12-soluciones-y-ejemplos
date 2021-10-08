@@ -1,4 +1,4 @@
-import { signup, login, getInfo } from '../peticiones/usuarios.js';
+import { signup, login, getInfo, updateUser, deleteUser } from '../peticiones/usuarios.js';
 
 export const signupEvent = e => {
     e.preventDefault();
@@ -19,5 +19,9 @@ export const infoEvent = () => {
 }
 
 export const userData = e => {
-    console.log(e.target);
+    if (e.target.tagName === 'BUTTON' && e.target.textContent === 'Editar Usuario') {
+        updateUser();
+    } else if (e.target.tagName === 'BUTTON' && e.target.textContent === 'Eliminar Usuario') {
+        deleteUser();
+    }
 }

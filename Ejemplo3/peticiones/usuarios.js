@@ -29,3 +29,32 @@ export const getInfo = async () => {
         console.log(e);
     }
 }
+
+export const updateUser = async () => {
+    let email = prompt('Nuevo Email');
+    let firstName = prompt('Nuevo nombre');
+    let lastName = prompt('Nuevo apellido');
+    try {
+        const respuesta = await axios.put(API_URI + '/user', { email, firstName, lastName }, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        });
+        alert('Usuario actualizado');
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export const deleteUser = async () => {
+    try {
+        const respuesta = await axios.delete(API_URI + '/user', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        });
+        alert('Usuario eliminado');
+    } catch (e) {
+        console.log(e);
+    }
+}
