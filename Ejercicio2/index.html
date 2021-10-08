@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modularización</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>
+            Registro
+        </legend>
+        <form id="signupForm">
+            <label for="signupFirstName">Nombre:</label>
+            <br />
+            <input id="signupFirstName" type="text" placeholder="Ingresa un nombre" name="firstName" required>
+            <br />
+            <br />
+            <label for="signupLastName">Apellido:</label>
+            <br />
+            <input id="signupLastName" type="text" placeholder="Ingresa la contraseña" name="lastName" required>
+            <br />
+            <br />
+            <label for="signupEmail">Correo:</label>
+            <br />
+            <input id="signupEmail" type="mail" placeholder="Ingresa un correo" name="email" required>
+            <br />
+            <br />
+            <label for="signupPassword">Contraseña:</label>
+            <br />
+            <input id="signupPassword" type="password" placeholder="Ingresa la contraseña" name="password" required>
+            <br />
+            <br />
+
+            <input type="submit" value="Iniciar sesión">
+        </form>
+    </fieldset>
+    <br />
+    <fieldset>
+        <legend>
+            Inicio de sesión
+        </legend>
+        <form id="loginForm">
+            <label for="loginEmail">Correo:</label>
+            <br />
+            <input id="loginEmail" type="mail" placeholder="Ingresa un correo" name="email" required>
+            <br />
+            <br />
+            <label for="loginPassword">Contraseña:</label>
+            <br />
+            <input id="loginPassword" type="password" placeholder="Ingresa la contraseña" name="password" required>
+            <br />
+            <br />
+
+            <input type="submit" value="Iniciar sesión">
+        </form>
+    </fieldset>
+    <br />
+    <fieldset>
+        <legend>
+            Sesión
+        </legend>
+        <button type="button" id="getInfoButton">Obtener info</button>
+    </fieldset>
+    <br />
+
+    <fieldset>
+        <legend>
+            Tareas
+        </legend>
+        <button type="button" id="getTasksButton">Obtener tareas</button>
+        <ul id="tasksList">
+
+        </ul>
+    </fieldset>
+
+    <fieldset>
+        <legend>
+            Editar y eliminar usuario
+        </legend>
+        <div id="btnUser">
+            <button type="button" id="editUser">Editar Usuario</button>
+            <button type="button" id="deleteUser">Eliminar Usuario</button>
+        </div>
+    </fieldset>
+
+    <a href="../">Volver</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>
