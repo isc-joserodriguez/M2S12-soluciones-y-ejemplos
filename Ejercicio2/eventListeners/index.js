@@ -1,4 +1,5 @@
 import { signup, login, getInfo, updateUser, deleteUser } from '../peticiones/usuarios.js';
+import { updateTask, deleteTask } from '../peticiones/tareas.js';
 
 export const signupEvent = e => {
     e.preventDefault();
@@ -23,5 +24,13 @@ export const userData = e => {
         updateUser();
     } else if (e.target.tagName === 'BUTTON' && e.target.textContent === 'Eliminar Usuario') {
         deleteUser();
+    }
+}
+
+export const taskData = e => {
+    if (e.target.textContent === 'editar' && e.target.tagName === 'BUTTON') {
+        updateTask(e.target.parentNode.getAttribute('id'));
+    } else if (e.target.textContent === 'eliminar' && e.target.tagName === 'BUTTON') {
+        deleteTask(e.target.parentNode.getAttribute('id'));
     }
 }
